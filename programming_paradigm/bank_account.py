@@ -1,23 +1,30 @@
+## bank_account.py
+
 class BankAccount:
     def __init__(self, initial_balance=0):
-        """Initialize the bank account with an optional starting balance."""
-        self.__account_balance = initial_balance  # Encapsulated attribute
+        """
+        Initialize the BankAccount object.
+        initial_balance (float): Starting balance, defaults to 0.
+        """
+        # This is an attribute (variable) unique to each instance of the class
+        self.account_balance = initial_balance
 
     def deposit(self, amount):
-        """Deposit the specified amount into the account."""
-        if amount > 0:
-            self.__account_balance += amount
-        else:
-            print("Deposit amount must be positive.")
+        """Add the specified amount to the account balance."""
+        self.account_balance += amount
 
     def withdraw(self, amount):
-        """Withdraw the specified amount if sufficient funds exist."""
-        if amount <= self.__account_balance:
-            self.__account_balance -= amount
+        """
+        Deduct the amount if funds are sufficient.
+        Returns True if successful, False if insufficient funds.
+        """
+        if self.account_balance >= amount:
+            self.account_balance -= amount
             return True
         else:
             return False
 
     def display_balance(self):
-        """Display the current account balance."""
-        print(f"Current Balance: ${self.__account_balance:.2f}")
+        """Print the current balance in a user-friendly format."""
+        # The :.2f ensures it prints with 2 decimal places (like money)
+        print(f"Current Balance: ${self.account_balance:.2f}")
