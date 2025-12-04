@@ -1,18 +1,16 @@
 # main.py
-from polymorphism_demo import Shape, Rectangle, Circle
-import math
+from class_static_methods_demo import Calculator
 
 def main():
-    shapes = [
-        Rectangle(10, 5),
-        Circle(7)
-    ]
+    # Using the static method
+    # Notice: It does simple math, no printing of class attributes
+    sum_result = Calculator.add(10, 5)
+    print(f"The sum is: {sum_result}")
 
-    for shape in shapes:
-        # This is Polymorphism in action:
-        # We call .area() on generic 'shape', but the specific
-        # class (Rectangle or Circle) handles the logic.
-        print(f"The area of the {shape.__class__.__name__} is: {shape.area()}")
+    # Using the class method
+    # Notice: It prints the calculation_type BEFORE returning the result
+    product_result = Calculator.multiply(10, 5)
+    print(f"The product is: {product_result}")
 
 if __name__ == "__main__":
     main()
